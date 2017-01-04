@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the Number of False Positive Selections — msaenet.fp • msaenet</title>
+<title>Get Indices of Non-Zero Variables in All Steps — msaenet.nzv.all • msaenet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,15 +77,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the Number of False Positive Selections</h1>
+    <h1>Get Indices of Non-Zero Variables in All Steps</h1>
     </div>
 
     
-    <p>Get the number of false positive selections from msaenet model objects,
-given the indices of true variables (if known).</p>
+    <p>Get the indices of non-zero variables in all steps from msaenet model objects.</p>
     
 
-    <pre><span class='fu'>msaenet.fp</span>(<span class='no'>object</span>, <span class='no'>true.idx</span>)</pre>
+    <pre><span class='fu'>msaenet.nzv.all</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -93,13 +92,11 @@ given the indices of true variables (if known).</p>
       <dd>An object of class <code>msaenet</code> produced
 by <code><a href='aenet.html'>aenet</a></code>, <code>amnet</code>, <code>asnet</code>,
 <code><a href='msaenet.html'>msaenet</a></code>, <code><a href='msamnet.html'>msamnet</a></code>, or <code><a href='msasnet.html'>msasnet</a></code>.</dd>
-      <dt>true.idx</dt>
-      <dd>Vector. Indices of true variables.</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Number of false positive variables in the model.</p>
+    <p>List containing indices vectors of non-zero variables in all steps.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -111,7 +108,19 @@ by <code><a href='aenet.html'>aenet</a></code>, <code>amnet</code>, <code>asnet<
                       <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>),
                       <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1003</span>)
 
-<span class='fu'>msaenet.fp</span>(<span class='no'>msaenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 8</div></pre>
+<span class='fu'>msaenet.nzv.all</span>(<span class='no'>msaenet.fit</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;  [1]   1   2   3   4   5   6  33  35  49  54  74 114 135 171 178 226 244 262 263
+#&gt; [20] 312 358 363 379 388 441 463 464 500
+#&gt; 
+#&gt; [[2]]
+#&gt;  [1]   1   2   3   4   5  35  49 114 171 312 379 441 464 500
+#&gt; 
+#&gt; [[3]]
+#&gt;  [1]   2   3   4   5  35 114 171 312 379 441 464 500
+#&gt; 
+#&gt; [[4]]
+#&gt;  [1]   2   3   4   5  35 114 171 312 379 441 464 500
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

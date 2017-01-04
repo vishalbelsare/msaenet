@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Multi-Step Adaptive Elastic-Net — msaenet • msaenet</title>
+<title>Adaptive MCP-Net — amnet • msaenet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,48 +77,44 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Multi-Step Adaptive Elastic-Net</h1>
+    <h1>Adaptive MCP-Net</h1>
     </div>
 
     
-    <p>Multi-Step Adaptive Elastic-Net</p>
+    <p>Adaptive MCP-Net</p>
     
 
-    <pre><span class='fu'>msaenet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gaussian"</span>, <span class='st'>"binomial"</span>, <span class='st'>"poisson"</span>, <span class='st'>"multinomial"</span>,
-  <span class='st'>"cox"</span>, <span class='st'>"mgaussian"</span>), <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"enet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>), <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"lambda.min"</span>, <span class='st'>"lambda.1se"</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre><span class='fu'>amnet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gaussian"</span>, <span class='st'>"binomial"</span>, <span class='st'>"poisson"</span>, <span class='st'>"cox"</span>),
+  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"mnet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>gammas</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1.01</span>, <span class='fl'>1.7</span>, <span class='fl'>3</span>, <span class='fl'>100</span>),
+  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>), <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>,
+  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>Data matrix.</dd>
       <dt>y</dt>
-      <dd>Response vector.</dd>
+      <dd>Response vector if <code>family</code> is <code>&quot;gaussian&quot;</code>,
+<code>&quot;binomial&quot;</code> or <code>&quot;poisson&quot;</code>.
+If <code>family</code> is <code>&quot;cox&quot;</code>, a response matrix made by
+<code><a href='http://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></code>.</dd>
       <dt>family</dt>
-      <dd>Response type.</dd>
+      <dd>Model family, can be <code>&quot;gaussian&quot;</code>,
+<code>&quot;binomial&quot;</code>, <code>&quot;poisson&quot;</code>, or <code>&quot;cox&quot;</code>.</dd>
       <dt>init</dt>
       <dd>Type of the penalty used in the initial
-estimation step. Can be <code>&quot;enet&quot;</code> or <code>&quot;ridge&quot;</code>.
-See <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></code> for details.</dd>
-      <dt>nsteps</dt>
-      <dd>How many adaptive estimation steps? At least 2.
-We assume adaptive elastic-net has only 1 adaptive estimation step.</dd>
+estimation step. Can be <code>&quot;mnet&quot;</code> or <code>&quot;ridge&quot;</code>.</dd>
       <dt>nfolds</dt>
       <dd>Fold numbers of cross-validation.</dd>
+      <dt>gammas</dt>
+      <dd>Vector of candidate <code>gamma</code>s to use in MCP-Net.</dd>
       <dt>alphas</dt>
-      <dd>Vector of candidate <code>alpha</code>s to use in
-<code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code>.</dd>
+      <dd>Vector of candidate <code>alpha</code>s to use in MCP-Net.</dd>
       <dt>gamma</dt>
       <dd>Scaling factor for adaptive weights:
 <code>weights = coefs^(-gamma)</code>.</dd>
-      <dt>rule</dt>
-      <dd>Model selection criterion, <code>&quot;lambda.min&quot;</code> or
-<code>&quot;lambda.1se&quot;</code>. See <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code> for details.</dd>
       <dt>seed</dt>
-      <dd>Two random seeds for cross-validation fold division
-in two estimation steps.</dd>
+      <dd>Random seed for cross-validation fold division.</dd>
       <dt>parallel</dt>
       <dd>Logical. Enable parallel parameter tuning or not,
 default is FALSE. To enable parallel tuning, load the
@@ -131,13 +127,7 @@ with the number of CPU cores before calling this function.</dd>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>List of coefficients <code>beta</code> and
-<code>glmnet</code> model object <code>model</code>.</p>
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Nan Xiao and Qing-Song Xu. (2015). Multi-step adaptive elastic-net:
-reducing false positives in high-dimensional variable selection.
-<em>Journal of Statistical Computation and Simulation</em> 85(18), 3755--3765.</p>
+<code>ncvreg</code> model object <code>model</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -145,15 +135,14 @@ reducing false positives in high-dimensional variable selection.
                            <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>snr</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.train</span> <span class='kw'>=</span> <span class='fl'>0.7</span>,
                            <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>)
 
-<span class='no'>msaenet.fit</span> <span class='kw'>=</span> <span class='fu'>msaenet</span>(<span class='no'>dat</span>$<span class='no'>x.tr</span>, <span class='no'>dat</span>$<span class='no'>y.tr</span>,
-                      <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>),
-                      <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1003</span>)
+<span class='no'>amnet.fit</span> <span class='kw'>=</span> <span class='fu'>amnet</span>(<span class='no'>dat</span>$<span class='no'>x.tr</span>, <span class='no'>dat</span>$<span class='no'>y.tr</span>,
+                  <span class='kw'>gammas</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1002</span>)
 
-<span class='fu'>print</span>(<span class='no'>msaenet.fit</span>)</div><div class='output co'>#&gt; Call: msaenet(x = dat$x.tr, y = dat$y.tr, nsteps = 3L, alphas = seq(0.2, 
-#&gt;     0.8, 0.2), seed = 1003) 
-#&gt;   Df      %Dev       Lambda
-#&gt; 1 12 0.8149474 9.517421e+14</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>msaenet.fit</span>)</div><div class='output co'>#&gt;  [1]   2   3   4   5  35 114 171 312 379 441 464 500</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>msaenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 8</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>msaenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='no'>msaenet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>msaenet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
-<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>msaenet.pred</span>)</div><div class='output co'>#&gt; [1] 2.656733</div><div class='input'><span class='fu'>plot</span>(<span class='no'>msaenet.fit</span>)</div><img src='msaenet-12.png' alt='' width='540' height='400' /></pre>
+<span class='fu'>print</span>(<span class='no'>amnet.fit</span>)</div><div class='output co'>#&gt; Call: amnet(x = dat$x.tr, y = dat$y.tr, gammas = 3, alphas = seq(0.2, 
+#&gt;     0.8, 0.2), seed = 1002) 
+#&gt;   Df    Lambda Gamma Alpha
+#&gt; 1  9 0.2606535     3   0.6</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>amnet.fit</span>)</div><div class='output co'>#&gt; [1]   2   3   4   5 114 171 312 379 464</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>amnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 5</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>amnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='no'>amnet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>amnet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
+<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>amnet.pred</span>)</div><div class='output co'>#&gt; [1] 2.459328</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -161,8 +150,6 @@ reducing false positives in high-dimensional variable selection.
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

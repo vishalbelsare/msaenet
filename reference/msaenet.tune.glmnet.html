@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the Number of False Positive Selections — msaenet.fp • msaenet</title>
+<title>Automatic parameter tuning for glmnet by k-fold cross-validation — msaenet.tune.glmnet • msaenet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,51 +77,27 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the Number of False Positive Selections</h1>
+    <h1>Automatic parameter tuning for glmnet by k-fold cross-validation</h1>
     </div>
 
     
-    <p>Get the number of false positive selections from msaenet model objects,
-given the indices of true variables (if known).</p>
+    <p>Automatic parameter tuning for glmnet by k-fold cross-validation</p>
     
 
-    <pre><span class='fu'>msaenet.fp</span>(<span class='no'>object</span>, <span class='no'>true.idx</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>object</dt>
-      <dd>An object of class <code>msaenet</code> produced
-by <code><a href='aenet.html'>aenet</a></code>, <code>amnet</code>, <code>asnet</code>,
-<code><a href='msaenet.html'>msaenet</a></code>, <code><a href='msamnet.html'>msamnet</a></code>, or <code><a href='msasnet.html'>msasnet</a></code>.</dd>
-      <dt>true.idx</dt>
-      <dd>Vector. Indices of true variables.</dd>
-    </dl>
-    
+    <pre><span class='fu'>msaenet.tune.glmnet</span>(<span class='no'>...</span>, <span class='no'>alphas</span>, <span class='no'>seed</span>, <span class='no'>parallel</span>)</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Number of false positive variables in the model.</p>
+    <p>best model object and best alpha value</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>=</span> <span class='fu'><a href='msaenet.sim.gaussian.html'>msaenet.sim.gaussian</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>150</span>, <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>rho</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
-                           <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>snr</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.train</span> <span class='kw'>=</span> <span class='fl'>0.7</span>,
-                           <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>)
-
-<span class='no'>msaenet.fit</span> <span class='kw'>=</span> <span class='fu'><a href='msaenet.html'>msaenet</a></span>(<span class='no'>dat</span>$<span class='no'>x.tr</span>, <span class='no'>dat</span>$<span class='no'>y.tr</span>,
-                      <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>),
-                      <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1003</span>)
-
-<span class='fu'>msaenet.fp</span>(<span class='no'>msaenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 8</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
     <h2>Author</h2>
     

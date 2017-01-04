@@ -100,11 +100,12 @@
 See <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></code> for details.</dd>
       <dt>init</dt>
       <dd>Type of the penalty used in the initial
-estimation step. Could be <code>&quot;enet&quot;</code> or <code>&quot;ridge&quot;</code>.</dd>
+estimation step. Can be <code>&quot;enet&quot;</code> or <code>&quot;ridge&quot;</code>.</dd>
       <dt>nfolds</dt>
       <dd>Fold numbers of cross-validation.</dd>
       <dt>alphas</dt>
-      <dd>Vector of alphas to use in <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code>.</dd>
+      <dd>Vector of candidate <code>alpha</code>s to use in
+<code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code>.</dd>
       <dt>gamma</dt>
       <dd>Scaling factor for adaptive weights:
 <code>weights = coefs^(-gamma)</code>.</dd>
@@ -119,7 +120,7 @@ default is FALSE. To enable parallel tuning, load the
 <code>doParallel</code> package and run <code>registerDoParallel()</code>
 with the number of CPU cores before calling this function.</dd>
       <dt>verbose</dt>
-      <dd>Should we print out the progress?</dd>
+      <dd>Should we print out the estimation progress?</dd>
     </dl>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
