@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Multi-Step Adaptive Estimation Methods for Sparse Regressions — msaenet-package • msaenet</title>
+<title>Mean Squared Error (MSE) — msaenet.mse • msaenet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,51 +77,40 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Multi-Step Adaptive Estimation Methods for Sparse Regressions</h1>
+    <h1>Mean Squared Error (MSE)</h1>
     </div>
 
     
-    <p>Multi-step adaptive elastic-net (MSAENet) algorithm for
-feature selection in high-dimensional regressions proposed in
-Xiao and Xu (2015) &lt;DOI:10.1080/00949655.2015.1016944&gt;,
-with additional support for multi-step adaptive MCP-Net
-(MSAMNet) and multi-step adaptive SCAD-Net (MSASNet) methods.</p>
+    <p>Compute mean squared error (MSE).</p>
     
 
-        
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Browse the vignette with <code>vignette(&quot;msaenet&quot;)</code>.</p>
-    <p><table><tr><td> Package: </td>
-</tr><tr><td> msaenet</td>
-</tr><tr><td>
-Type: </td>
-</tr><tr><td> Package</td>
-</tr><tr><td>
-License: </td>
-</tr><tr><td> GPL-3</td>
-</tr></table></p>
+    <pre><span class='fu'>msaenet.mse</span>(<span class='no'>yreal</span>, <span class='no'>ypred</span>)</pre>
     
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <dl class="dl-horizontal">
+      <dt>yreal</dt>
+      <dd>Vector. True response.</dd>
+      <dt>ypred</dt>
+      <dd>Vector. Predicted response.</dd>
+    </dl>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Nan Xiao and Qing-Song Xu. (2015). Multi-step adaptive elastic-net:
-reducing false positives in high-dimensional variable selection.
-<em>Journal of Statistical Computation and Simulation</em> 85(18), 3755--3765.</p>
+    <p>MSE</p>
     
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#references">References</a></li>
+      <li><a href="#value">Value</a></li>
           </ul>
 
     <h2>Author</h2>
     
-Nan Xiao &lt;<a href='mailto:me@nanx.me'>me@nanx.me</a>&gt;
+Nan Xiao &lt;<a href = 'http://nanx.me'>http://nanx.me</a>&gt;
 
   </div>
 </div>

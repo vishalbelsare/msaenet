@@ -86,8 +86,8 @@
 
     <pre><span class='fu'>amnet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gaussian"</span>, <span class='st'>"binomial"</span>, <span class='st'>"poisson"</span>, <span class='st'>"cox"</span>),
   <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"mnet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>gammas</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1.01</span>, <span class='fl'>1.7</span>, <span class='fl'>3</span>, <span class='fl'>100</span>),
-  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>), <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>,
-  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>), <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>max.iter</span> <span class='kw'>=</span> <span class='fl'>10000L</span>,
+  <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -110,6 +110,10 @@ estimation step. Can be <code>&quot;mnet&quot;</code> or <code>&quot;ridge&quot;
       <dd>Vector of candidate <code>gamma</code>s to use in MCP-Net.</dd>
       <dt>alphas</dt>
       <dd>Vector of candidate <code>alpha</code>s to use in MCP-Net.</dd>
+      <dt>eps</dt>
+      <dd>Convergence threshhold to use in MCP-net.</dd>
+      <dt>max.iter</dt>
+      <dd>Maximum number of iterations to use in MCP-net.</dd>
       <dt>gamma</dt>
       <dd>Scaling factor for adaptive weights:
 <code>weights = coefs^(-gamma)</code>.</dd>
@@ -142,7 +146,7 @@ with the number of CPU cores before calling this function.</dd>
 #&gt;     0.8, 0.2), seed = 1002) 
 #&gt;   Df    Lambda Gamma Alpha
 #&gt; 1  9 0.2606535     3   0.6</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>amnet.fit</span>)</div><div class='output co'>#&gt; [1]   2   3   4   5 114 171 312 379 464</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>amnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 5</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>amnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='no'>amnet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>amnet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
-<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>amnet.pred</span>)</div><div class='output co'>#&gt; [1] 2.459328</div></pre>
+<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>amnet.pred</span>)</div><div class='output co'>#&gt; [1] 2.459328</div><div class='input'><span class='fu'>plot</span>(<span class='no'>amnet.fit</span>)</div><img src='amnet-12.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
