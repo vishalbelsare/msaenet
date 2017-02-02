@@ -85,9 +85,10 @@
     
 
     <pre><span class='fu'>asnet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gaussian"</span>, <span class='st'>"binomial"</span>, <span class='st'>"poisson"</span>, <span class='st'>"cox"</span>),
-  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"snet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>gammas</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2.01</span>, <span class='fl'>2.3</span>, <span class='fl'>3.7</span>, <span class='fl'>200</span>),
-  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>), <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>max.iter</span> <span class='kw'>=</span> <span class='fl'>10000L</span>,
-  <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"snet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>gammas</span> <span class='kw'>=</span> <span class='fl'>3.7</span>, <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>),
+  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"cv"</span>, <span class='st'>"ebic"</span>, <span class='st'>"bic"</span>, <span class='st'>"aic"</span>), <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>ebic.gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>, <span class='kw'>max.iter</span> <span class='kw'>=</span> <span class='fl'>10000L</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>,
+  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -95,28 +96,36 @@
       <dd>Data matrix.</dd>
       <dt>y</dt>
       <dd>Response vector if <code>family</code> is <code>&quot;gaussian&quot;</code>,
-<code>&quot;binomial&quot;</code> or <code>&quot;poisson&quot;</code>.
-If <code>family</code> is <code>&quot;cox&quot;</code>, a response matrix made by
-<code><a href='http://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></code>.</dd>
+<code>&quot;binomial&quot;</code>, or <code>&quot;poisson&quot;</code>. If <code>family</code> is
+<code>&quot;cox&quot;</code>, a response matrix created by <code><a href='http://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></code>.</dd>
       <dt>family</dt>
       <dd>Model family, can be <code>&quot;gaussian&quot;</code>,
 <code>&quot;binomial&quot;</code>, <code>&quot;poisson&quot;</code>, or <code>&quot;cox&quot;</code>.</dd>
       <dt>init</dt>
       <dd>Type of the penalty used in the initial
 estimation step. Can be <code>&quot;snet&quot;</code> or <code>&quot;ridge&quot;</code>.</dd>
-      <dt>nfolds</dt>
-      <dd>Fold numbers of cross-validation.</dd>
       <dt>gammas</dt>
-      <dd>Vector of candidate <code>gamma</code>s to use in SCAD-Net.</dd>
+      <dd>Vector of candidate <code>gamma</code>s (the concavity parameter)
+to use in SCAD-Net. Default is 3.7.</dd>
       <dt>alphas</dt>
       <dd>Vector of candidate <code>alpha</code>s to use in SCAD-Net.</dd>
+      <dt>tune</dt>
+      <dd>Parameter tuning method for each estimation step.
+Possible options are <code>&quot;cv&quot;</code>, <code>&quot;ebic&quot;</code>, <code>&quot;bic&quot;</code>,
+and <code>&quot;aic&quot;</code>. Default is <code>&quot;cv&quot;</code>.</dd>
+      <dt>nfolds</dt>
+      <dd>Fold numbers of cross-validation when <code>tune = &quot;cv&quot;</code>.</dd>
+      <dt>ebic.gamma</dt>
+      <dd>Parameter for Extended BIC penalizing
+size of the model space when <code>tune = &quot;ebic&quot;</code>,
+default is <code>1</code>. For details, see Chen and Chen (2008).</dd>
+      <dt>scale</dt>
+      <dd>Scaling factor for adaptive weights:
+<code>weights = coefficients^(-scale)</code>.</dd>
       <dt>eps</dt>
       <dd>Convergence threshhold to use in SCAD-net.</dd>
       <dt>max.iter</dt>
       <dd>Maximum number of iterations to use in SCAD-net.</dd>
-      <dt>gamma</dt>
-      <dd>Scaling factor for adaptive weights:
-<code>weights = coefs^(-gamma)</code>.</dd>
       <dt>seed</dt>
       <dd>Random seed for cross-validation fold division.</dd>
       <dt>parallel</dt>
@@ -130,8 +139,8 @@ with the number of CPU cores before calling this function.</dd>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List of coefficients <code>beta</code> and
-<code>ncvreg</code> model object <code>model</code>.</p>
+    <p>List of model coefficients, <code>ncvreg</code> model object,
+and the optimal parameter set.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -140,10 +149,10 @@ with the number of CPU cores before calling this function.</dd>
                            <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>)
 
 <span class='no'>asnet.fit</span> <span class='kw'>=</span> <span class='fu'>asnet</span>(<span class='no'>dat</span>$<span class='no'>x.tr</span>, <span class='no'>dat</span>$<span class='no'>y.tr</span>,
-                  <span class='kw'>gammas</span> <span class='kw'>=</span> <span class='fl'>3.7</span>, <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1002</span>)
+                  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1002</span>)
 
-<span class='fu'>print</span>(<span class='no'>asnet.fit</span>)</div><div class='output co'>#&gt; Call: asnet(x = dat$x.tr, y = dat$y.tr, gammas = 3.7, alphas = seq(0.2, 
-#&gt;     0.8, 0.2), seed = 1002) 
+<span class='fu'>print</span>(<span class='no'>asnet.fit</span>)</div><div class='output co'>#&gt; Call: asnet(x = dat$x.tr, y = dat$y.tr, alphas = seq(0.2, 0.8, 0.2), 
+#&gt;     seed = 1002) 
 #&gt;   Df    Lambda Gamma Alpha
 #&gt; 1  8 0.2282179   3.7   0.6</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>asnet.fit</span>)</div><div class='output co'>#&gt; [1]   2   3   4   5 114 312 379 464</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>asnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>asnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='no'>asnet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>asnet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
 <span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>asnet.pred</span>)</div><div class='output co'>#&gt; [1] 2.309397</div><div class='input'><span class='fu'>plot</span>(<span class='no'>asnet.fit</span>)</div><img src='asnet-12.png' alt='' width='540' height='400' /></pre>

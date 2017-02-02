@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Automatic (parallel) parameter tuning for ncvreg models — msaenet.tune.ncvreg • msaenet</title>
+<title>Select the number of adaptive estimation steps — msaenet.tune.nsteps.ncvreg • msaenet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -77,25 +77,18 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Automatic (parallel) parameter tuning for ncvreg models</h1>
+    <h1>Select the number of adaptive estimation steps</h1>
     </div>
 
     
-    <p>Automatic (parallel) parameter tuning for ncvreg models</p>
+    <p>Select the number of adaptive estimation steps</p>
     
 
-    <pre><span class='fu'>msaenet.tune.ncvreg</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='no'>family</span>, <span class='no'>penalty</span>, <span class='no'>gammas</span>, <span class='no'>alphas</span>, <span class='no'>tune</span>, <span class='no'>nfolds</span>,
-  <span class='no'>ebic.gamma</span>, <span class='no'>eps</span>, <span class='no'>max.iter</span>, <span class='no'>seed</span>, <span class='no'>parallel</span>, <span class='no'>...</span>)</pre>
+    <pre><span class='fu'>msaenet.tune.nsteps.ncvreg</span>(<span class='no'>model.list</span>, <span class='no'>tune.nsteps</span>, <span class='no'>ebic.gamma.nsteps</span>)</pre>
         
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Optimal model object, parameter set, and criterion value</p>
-    
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Chen, Jiahua, and Zehua Chen. (2008).
-Extended Bayesian information criteria for model selection with
-large model spaces. <em>Biometrika</em> 95(3), 759--771.</p>
+    <p>optimal step number</p>
     
 
   </div>
@@ -104,8 +97,6 @@ large model spaces. <em>Biometrika</em> 95(3), 759--771.</p>
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#references">References</a></li>
           </ul>
 
     <h2>Author</h2>

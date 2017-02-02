@@ -84,38 +84,62 @@
     <p>Multi-Step Adaptive Elastic-Net</p>
     
 
-    <pre><span class='fu'>msaenet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gaussian"</span>, <span class='st'>"binomial"</span>, <span class='st'>"poisson"</span>, <span class='st'>"multinomial"</span>,
-  <span class='st'>"cox"</span>, <span class='st'>"mgaussian"</span>), <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"enet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
-  <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>), <span class='kw'>gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"lambda.min"</span>, <span class='st'>"lambda.1se"</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre><span class='fu'>msaenet</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>family</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"gaussian"</span>, <span class='st'>"binomial"</span>, <span class='st'>"poisson"</span>, <span class='st'>"cox"</span>),
+  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"enet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>),
+  <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"cv"</span>, <span class='st'>"ebic"</span>, <span class='st'>"bic"</span>, <span class='st'>"aic"</span>), <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>,
+  <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"lambda.min"</span>, <span class='st'>"lambda.1se"</span>), <span class='kw'>ebic.gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>2L</span>,
+  <span class='kw'>tune.nsteps</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"max"</span>, <span class='st'>"ebic"</span>, <span class='st'>"bic"</span>, <span class='st'>"aic"</span>), <span class='kw'>ebic.gamma.nsteps</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>Data matrix.</dd>
       <dt>y</dt>
-      <dd>Response vector.</dd>
+      <dd>Response vector if <code>family</code> is <code>&quot;gaussian&quot;</code>,
+<code>&quot;binomial&quot;</code>, or <code>&quot;poisson&quot;</code>. If <code>family</code> is
+<code>&quot;cox&quot;</code>, a response matrix created by <code><a href='http://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></code>.</dd>
       <dt>family</dt>
-      <dd>Response type.</dd>
+      <dd>Model family, can be <code>&quot;gaussian&quot;</code>,
+<code>&quot;binomial&quot;</code>, <code>&quot;poisson&quot;</code>, or <code>&quot;cox&quot;</code>.</dd>
       <dt>init</dt>
       <dd>Type of the penalty used in the initial
 estimation step. Can be <code>&quot;enet&quot;</code> or <code>&quot;ridge&quot;</code>.
 See <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></code> for details.</dd>
-      <dt>nsteps</dt>
-      <dd>How many adaptive estimation steps? At least 2.
-We assume adaptive elastic-net has only 1 adaptive estimation step.</dd>
-      <dt>nfolds</dt>
-      <dd>Fold numbers of cross-validation.</dd>
       <dt>alphas</dt>
       <dd>Vector of candidate <code>alpha</code>s to use in
 <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code>.</dd>
-      <dt>gamma</dt>
-      <dd>Scaling factor for adaptive weights:
-<code>weights = coefs^(-gamma)</code>.</dd>
+      <dt>tune</dt>
+      <dd>Parameter tuning method for each estimation step.
+Possible options are <code>&quot;cv&quot;</code>, <code>&quot;ebic&quot;</code>, <code>&quot;bic&quot;</code>,
+and <code>&quot;aic&quot;</code>. Default is <code>&quot;cv&quot;</code>.</dd>
+      <dt>nfolds</dt>
+      <dd>Fold numbers of cross-validation when <code>tune = &quot;cv&quot;</code>.</dd>
       <dt>rule</dt>
-      <dd>Model selection criterion, <code>&quot;lambda.min&quot;</code> or
-<code>&quot;lambda.1se&quot;</code>. See <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code> for details.</dd>
+      <dd>Lambda selection criterion when <code>tune = &quot;cv&quot;</code>,
+can be <code>&quot;lambda.min&quot;</code> or <code>&quot;lambda.1se&quot;</code>.
+See <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/cv.glmnet'>cv.glmnet</a></code> for details.</dd>
+      <dt>ebic.gamma</dt>
+      <dd>Parameter for Extended BIC penalizing
+size of the model space when <code>tune = &quot;ebic&quot;</code>,
+default is <code>1</code>. For details, see Chen and Chen (2008).</dd>
+      <dt>nsteps</dt>
+      <dd>Maximum number of adaptive estimation steps.
+At least <code>2</code>, assuming adaptive elastic-net has only
+one adaptive estimation step.</dd>
+      <dt>tune.nsteps</dt>
+      <dd>Optimal step number selection method
+(aggregate the optimal model from the each step and compare).
+Options include <code>&quot;max&quot;</code> (select the final-step model directly),
+or compare these models using <code>&quot;ebic&quot;</code>, <code>&quot;bic&quot;</code>, or <code>&quot;aic&quot;</code>.
+Default is <code>&quot;max&quot;</code>.</dd>
+      <dt>ebic.gamma.nsteps</dt>
+      <dd>Parameter for Extended BIC penalizing
+size of the model space when <code>tune.nsteps = &quot;ebic&quot;</code>,
+default is <code>1</code>.</dd>
+      <dt>scale</dt>
+      <dd>Scaling factor for adaptive weights:
+<code>weights = coefficients^(-scale)</code>.</dd>
       <dt>seed</dt>
       <dd>Two random seeds for cross-validation fold division
 in two estimation steps.</dd>
@@ -130,8 +154,8 @@ with the number of CPU cores before calling this function.</dd>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List of coefficients <code>beta</code> and
-<code>glmnet</code> model object <code>model</code>.</p>
+    <p>List of model coefficients, <code>glmnet</code> model object,
+and the optimal parameter set.</p>
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -149,8 +173,8 @@ reducing false positives in high-dimensional variable selection.
                       <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>),
                       <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1003</span>)
 
-<span class='fu'>print</span>(<span class='no'>msaenet.fit</span>)</div><div class='output co'>#&gt; Call: msaenet(x = dat$x.tr, y = dat$y.tr, nsteps = 3L, alphas = seq(0.2, 
-#&gt;     0.8, 0.2), seed = 1003) 
+<span class='fu'>print</span>(<span class='no'>msaenet.fit</span>)</div><div class='output co'>#&gt; Call: msaenet(x = dat$x.tr, y = dat$y.tr, alphas = seq(0.2, 0.8, 0.2), 
+#&gt;     nsteps = 3L, seed = 1003) 
 #&gt;   Df      %Dev       Lambda
 #&gt; 1 12 0.8149474 9.517421e+14</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>msaenet.fit</span>)</div><div class='output co'>#&gt;  [1]   2   3   4   5  35 114 171 312 379 441 464 500</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>msaenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 8</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>msaenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='no'>msaenet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>msaenet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
 <span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>msaenet.pred</span>)</div><div class='output co'>#&gt; [1] 2.656733</div><div class='input'><span class='fu'>plot</span>(<span class='no'>msaenet.fit</span>)</div><img src='msaenet-12.png' alt='' width='540' height='400' /></pre>
