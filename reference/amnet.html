@@ -106,7 +106,7 @@
 estimation step. Can be <code>&quot;mnet&quot;</code> or <code>&quot;ridge&quot;</code>.</dd>
       <dt>gammas</dt>
       <dd>Vector of candidate <code>gamma</code>s (the concavity parameter)
-to use in MCP-Net. Default is 3.</dd>
+to use in MCP-Net. Default is <code>3</code>.</dd>
       <dt>alphas</dt>
       <dd>Vector of candidate <code>alpha</code>s to use in MCP-Net.</dd>
       <dt>tune</dt>
@@ -144,12 +144,14 @@ and the optimal parameter set.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>=</span> <span class='fu'><a href='msaenet.sim.gaussian.html'>msaenet.sim.gaussian</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>150</span>, <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>rho</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
-                           <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>snr</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.train</span> <span class='kw'>=</span> <span class='fl'>0.7</span>,
-                           <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>)
+    <pre class="examples"><div class='input'><span class='no'>dat</span> <span class='kw'>=</span> <span class='fu'><a href='msaenet.sim.gaussian.html'>msaenet.sim.gaussian</a></span>(
+  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>150</span>, <span class='kw'>p</span> <span class='kw'>=</span> <span class='fl'>500</span>, <span class='kw'>rho</span> <span class='kw'>=</span> <span class='fl'>0.6</span>,
+  <span class='kw'>coef</span> <span class='kw'>=</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>5</span>), <span class='kw'>snr</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>p.train</span> <span class='kw'>=</span> <span class='fl'>0.7</span>,
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>)
 
-<span class='no'>amnet.fit</span> <span class='kw'>=</span> <span class='fu'>amnet</span>(<span class='no'>dat</span>$<span class='no'>x.tr</span>, <span class='no'>dat</span>$<span class='no'>y.tr</span>,
-                  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1002</span>)
+<span class='no'>amnet.fit</span> <span class='kw'>=</span> <span class='fu'>amnet</span>(
+  <span class='no'>dat</span>$<span class='no'>x.tr</span>, <span class='no'>dat</span>$<span class='no'>y.tr</span>,
+  <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.2</span>, <span class='fl'>0.8</span>, <span class='fl'>0.2</span>), <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1002</span>)
 
 <span class='fu'>print</span>(<span class='no'>amnet.fit</span>)</div><div class='output co'>#&gt; Call: amnet(x = dat$x.tr, y = dat$y.tr, alphas = seq(0.2, 0.8, 0.2), 
 #&gt;     seed = 1002) 
