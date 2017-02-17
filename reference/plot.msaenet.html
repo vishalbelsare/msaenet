@@ -86,7 +86,9 @@
 
     <pre><span class='co'># S3 method for msaenet</span>
 <span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"coef"</span>, <span class='st'>"criterion"</span>), <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>label.vars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>label.vars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label.pos</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>label.offset</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>label.cex</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -115,6 +117,19 @@ variables will be used as labels.</dd>
       <dt>label.vars</dt>
       <dd>Labels to use for all the variables
 if <code>label = &quot;TRUE&quot;</code>.</dd>
+      <dt>label.pos</dt>
+      <dd>Position of the labels. See argument
+<code>pos</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</dd>
+      <dt>label.offset</dt>
+      <dd>Offset of the labels. See argument
+<code>offset</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</dd>
+      <dt>label.cex</dt>
+      <dd>Character expansion factor of the labels.
+See argument <code>cex</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</dd>
+      <dt>xlab</dt>
+      <dd>Title for x axis. If is <code>NULL</code>, will use the default title.</dd>
+      <dt>ylab</dt>
+      <dd>Title for y axis. If is <code>NULL</code>, will use the default title.</dd>
       <dt>...</dt>
       <dd>Other parameters (not used).</dd>
     </dl>
