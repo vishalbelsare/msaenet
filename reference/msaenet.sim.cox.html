@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -88,22 +90,37 @@
   <span class='kw'>snr</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>p.train</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>n</dt>
-      <dd>Number of observations.</dd>
-      <dt>p</dt>
-      <dd>Number of variables.</dd>
-      <dt>rho</dt>
-      <dd>Correlation base for generating correlated variables.</dd>
-      <dt>coef</dt>
-      <dd>Vector of non-zero coefficients.</dd>
-      <dt>snr</dt>
-      <dd>Signal-to-noise ratio (SNR).</dd>
-      <dt>p.train</dt>
-      <dd>Percentage of training set.</dd>
-      <dt>seed</dt>
-      <dd>Random seed for reproducibility.</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>n</th>
+      <td><p>Number of observations.</p></td>
+    </tr>
+    <tr>
+      <th>p</th>
+      <td><p>Number of variables.</p></td>
+    </tr>
+    <tr>
+      <th>rho</th>
+      <td><p>Correlation base for generating correlated variables.</p></td>
+    </tr>
+    <tr>
+      <th>coef</th>
+      <td><p>Vector of non-zero coefficients.</p></td>
+    </tr>
+    <tr>
+      <th>snr</th>
+      <td><p>Signal-to-noise ratio (SNR).</p></td>
+    </tr>
+    <tr>
+      <th>p.train</th>
+      <td><p>Percentage of training set.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Random seed for reproducibility.</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
@@ -112,7 +129,7 @@
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Simon, N., Friedman, J., Hastie, T., &amp; Tibshirani, R. (2011).
-Regularization Paths for Cox&#39;s Proportional Hazards Model via
+Regularization Paths for Cox's Proportional Hazards Model via
 Coordinate Descent. <em>Journal of Statistical Software</em>, 39(5), 1--13.</p>
     
 

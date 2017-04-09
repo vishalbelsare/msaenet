@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -91,51 +93,82 @@
   <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>Data matrix.</dd>
-      <dt>y</dt>
-      <dd>Response vector if <code>family</code> is <code>&quot;gaussian&quot;</code>,
-<code>&quot;binomial&quot;</code>, or <code>&quot;poisson&quot;</code>. If <code>family</code> is
-<code>&quot;cox&quot;</code>, a response matrix created by <code><a href='http://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></code>.</dd>
-      <dt>family</dt>
-      <dd>Model family, can be <code>&quot;gaussian&quot;</code>,
-<code>&quot;binomial&quot;</code>, <code>&quot;poisson&quot;</code>, or <code>&quot;cox&quot;</code>.</dd>
-      <dt>init</dt>
-      <dd>Type of the penalty used in the initial
-estimation step. Can be <code>&quot;snet&quot;</code> or <code>&quot;ridge&quot;</code>.</dd>
-      <dt>gammas</dt>
-      <dd>Vector of candidate <code>gamma</code>s (the concavity parameter)
-to use in SCAD-Net. Default is <code>3.7</code>.</dd>
-      <dt>alphas</dt>
-      <dd>Vector of candidate <code>alpha</code>s to use in SCAD-Net.</dd>
-      <dt>tune</dt>
-      <dd>Parameter tuning method for each estimation step.
-Possible options are <code>&quot;cv&quot;</code>, <code>&quot;ebic&quot;</code>, <code>&quot;bic&quot;</code>,
-and <code>&quot;aic&quot;</code>. Default is <code>&quot;cv&quot;</code>.</dd>
-      <dt>nfolds</dt>
-      <dd>Fold numbers of cross-validation when <code>tune = &quot;cv&quot;</code>.</dd>
-      <dt>ebic.gamma</dt>
-      <dd>Parameter for Extended BIC penalizing
-size of the model space when <code>tune = &quot;ebic&quot;</code>,
-default is <code>1</code>. For details, see Chen and Chen (2008).</dd>
-      <dt>scale</dt>
-      <dd>Scaling factor for adaptive weights:
-<code>weights = coefficients^(-scale)</code>.</dd>
-      <dt>eps</dt>
-      <dd>Convergence threshhold to use in SCAD-net.</dd>
-      <dt>max.iter</dt>
-      <dd>Maximum number of iterations to use in SCAD-net.</dd>
-      <dt>seed</dt>
-      <dd>Random seed for cross-validation fold division.</dd>
-      <dt>parallel</dt>
-      <dd>Logical. Enable parallel parameter tuning or not,
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>Data matrix.</p></td>
+    </tr>
+    <tr>
+      <th>y</th>
+      <td><p>Response vector if <code>family</code> is <code>"gaussian"</code>,
+<code>"binomial"</code>, or <code>"poisson"</code>. If <code>family</code> is
+<code>"cox"</code>, a response matrix created by <code><a href='http://www.rdocumentation.org/packages/survival/topics/Surv'>Surv</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>family</th>
+      <td><p>Model family, can be <code>"gaussian"</code>,
+<code>"binomial"</code>, <code>"poisson"</code>, or <code>"cox"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>init</th>
+      <td><p>Type of the penalty used in the initial
+estimation step. Can be <code>"snet"</code> or <code>"ridge"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>gammas</th>
+      <td><p>Vector of candidate <code>gamma</code>s (the concavity parameter)
+to use in SCAD-Net. Default is <code>3.7</code>.</p></td>
+    </tr>
+    <tr>
+      <th>alphas</th>
+      <td><p>Vector of candidate <code>alpha</code>s to use in SCAD-Net.</p></td>
+    </tr>
+    <tr>
+      <th>tune</th>
+      <td><p>Parameter tuning method for each estimation step.
+Possible options are <code>"cv"</code>, <code>"ebic"</code>, <code>"bic"</code>,
+and <code>"aic"</code>. Default is <code>"cv"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>nfolds</th>
+      <td><p>Fold numbers of cross-validation when <code>tune = "cv"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>ebic.gamma</th>
+      <td><p>Parameter for Extended BIC penalizing
+size of the model space when <code>tune = "ebic"</code>,
+default is <code>1</code>. For details, see Chen and Chen (2008).</p></td>
+    </tr>
+    <tr>
+      <th>scale</th>
+      <td><p>Scaling factor for adaptive weights:
+<code>weights = coefficients^(-scale)</code>.</p></td>
+    </tr>
+    <tr>
+      <th>eps</th>
+      <td><p>Convergence threshhold to use in SCAD-net.</p></td>
+    </tr>
+    <tr>
+      <th>max.iter</th>
+      <td><p>Maximum number of iterations to use in SCAD-net.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Random seed for cross-validation fold division.</p></td>
+    </tr>
+    <tr>
+      <th>parallel</th>
+      <td><p>Logical. Enable parallel parameter tuning or not,
 default is FALSE. To enable parallel tuning, load the
 <code>doParallel</code> package and run <code>registerDoParallel()</code>
-with the number of CPU cores before calling this function.</dd>
-      <dt>verbose</dt>
-      <dd>Should we print out the estimation progress?</dd>
-    </dl>
+with the number of CPU cores before calling this function.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Should we print out the estimation progress?</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 

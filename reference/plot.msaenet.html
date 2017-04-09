@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -91,48 +93,75 @@
   <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>An object of class <code>msaenet</code> produced
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>An object of class <code>msaenet</code> produced
 by <code><a href='aenet.html'>aenet</a></code>, <code>amnet</code>, <code>asnet</code>,
-<code><a href='msaenet.html'>msaenet</a></code>, <code><a href='msamnet.html'>msamnet</a></code>, or <code><a href='msasnet.html'>msasnet</a></code>.</dd>
-      <dt>type</dt>
-      <dd>Plot type, <code>&quot;coef&quot;</code> for a coefficient path plot
-across all estimation steps; <code>&quot;criterion&quot;</code> for a scree plot of
-the model evaluation criterion used (CV error, AIC, BIC, or EBIC).</dd>
-      <dt>nsteps</dt>
-      <dd>Maximum number of estimation steps to plot.
-Default is to plot all steps.</dd>
-      <dt>highlight</dt>
-      <dd>Should we highlight the &quot;optimal&quot; step
-according to the criterion? Default is <code>TRUE</code>.</dd>
-      <dt>col</dt>
-      <dd>Color palette to use for the coefficient paths.
-If it is <code>NULL</code>, a default color palette will be assigned.</dd>
-      <dt>label</dt>
-      <dd>Should we label all the non-zero variables of the
+<code><a href='msaenet.html'>msaenet</a></code>, <code><a href='msamnet.html'>msamnet</a></code>, or <code><a href='msasnet.html'>msasnet</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>Plot type, <code>"coef"</code> for a coefficient path plot
+across all estimation steps; <code>"criterion"</code> for a scree plot of
+the model evaluation criterion used (CV error, AIC, BIC, or EBIC).</p></td>
+    </tr>
+    <tr>
+      <th>nsteps</th>
+      <td><p>Maximum number of estimation steps to plot.
+Default is to plot all steps.</p></td>
+    </tr>
+    <tr>
+      <th>highlight</th>
+      <td><p>Should we highlight the "optimal" step
+according to the criterion? Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p>Color palette to use for the coefficient paths.
+If it is <code>NULL</code>, a default color palette will be assigned.</p></td>
+    </tr>
+    <tr>
+      <th>label</th>
+      <td><p>Should we label all the non-zero variables of the
 optimal step in the coefficient plot? Default is <code>FALSE</code>.
 If <code>TRUE</code> and <code>label.vars = NULL</code>, the index of the
-variables will be used as labels.</dd>
-      <dt>label.vars</dt>
-      <dd>Labels to use for all the variables
-if <code>label = &quot;TRUE&quot;</code>.</dd>
-      <dt>label.pos</dt>
-      <dd>Position of the labels. See argument
-<code>pos</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</dd>
-      <dt>label.offset</dt>
-      <dd>Offset of the labels. See argument
-<code>offset</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</dd>
-      <dt>label.cex</dt>
-      <dd>Character expansion factor of the labels.
-See argument <code>cex</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</dd>
-      <dt>xlab</dt>
-      <dd>Title for x axis. If is <code>NULL</code>, will use the default title.</dd>
-      <dt>ylab</dt>
-      <dd>Title for y axis. If is <code>NULL</code>, will use the default title.</dd>
-      <dt>...</dt>
-      <dd>Other parameters (not used).</dd>
-    </dl>
+variables will be used as labels.</p></td>
+    </tr>
+    <tr>
+      <th>label.vars</th>
+      <td><p>Labels to use for all the variables
+if <code>label = "TRUE"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>label.pos</th>
+      <td><p>Position of the labels. See argument
+<code>pos</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>label.offset</th>
+      <td><p>Offset of the labels. See argument
+<code>offset</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>label.cex</th>
+      <td><p>Character expansion factor of the labels.
+See argument <code>cex</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</p></td>
+    </tr>
+    <tr>
+      <th>xlab</th>
+      <td><p>Title for x axis. If is <code>NULL</code>, will use the default title.</p></td>
+    </tr>
+    <tr>
+      <th>ylab</th>
+      <td><p>Title for y axis. If is <code>NULL</code>, will use the default title.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other parameters (not used).</p></td>
+    </tr>
+    </table>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

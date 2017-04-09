@@ -31,6 +31,8 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -84,111 +86,135 @@
     <div class="contents">
     <div id="msaenet-2-5-2017-03-24" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-2-5-2017-03-24" class="anchor"> </a>msaenet 2.5 (2017-03-24)</h1>
+<a href="#msaenet-2-5-2017-03-24" class="anchor"></a>msaenet 2.5 (2017-03-24)</h1>
 <div id="improvements" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements" class="anchor"> </a>Improvements</h2>
-<ul><li>Better code indentation style.</li>
+<a href="#improvements" class="anchor"></a>Improvements</h2>
+<ul>
+<li>Better code indentation style.</li>
 <li>Update gallery images in <code>README.md</code>.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="msaenet-2-4-2017-02-17" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-2-4-2017-02-17" class="anchor"> </a>msaenet 2.4 (2017-02-17)</h1>
+<a href="#msaenet-2-4-2017-02-17" class="anchor"></a>msaenet 2.4 (2017-02-17)</h1>
 <div id="improvements-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-1" class="anchor"> </a>Improvements</h2>
-<ul><li>Improved graphical details for coefficient path plots, following the general graphic style in the ESL (<em>The Elements of Statistical Learning</em>) book.</li>
+<a href="#improvements-1" class="anchor"></a>Improvements</h2>
+<ul>
+<li>Improved graphical details for coefficient path plots, following the general graphic style in the ESL (<em>The Elements of Statistical Learning</em>) book.</li>
 <li>More options available in <code><a href="../reference/plot.msaenet.html">plot.msaenet()</a></code> for extra flexibility: it is now possible to set important properties of the label appearance such as position, offset, font size, and axis titles via the new arguments <code>label.pos</code>, <code>label.offset</code>, <code>label.cex</code>, <code>xlab</code>, and <code>ylab</code>.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="msaenet-2-3-2017-02-09" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-2-3-2017-02-09" class="anchor"> </a>msaenet 2.3 (2017-02-09)</h1>
+<a href="#msaenet-2-3-2017-02-09" class="anchor"></a>msaenet 2.3 (2017-02-09)</h1>
 <div id="improvements-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-2" class="anchor"> </a>Improvements</h2>
-<ul><li>Reduced model saturation cases and improved speed at the initialization step for MCP-net and SCAD-net based models when <code>init = "ridge"</code>, by using the ridge estimation implementation from <code>glmnet</code>. As a benefit, we now have a more aligned baseline for the comparison between elastic-net based models and MCP-net/SCAD-net based models when <code>init = "ridge"</code>.</li>
+<a href="#improvements-2" class="anchor"></a>Improvements</h2>
+<ul>
+<li>Reduced model saturation cases and improved speed at the initialization step for MCP-net and SCAD-net based models when <code>init = "ridge"</code>, by using the ridge estimation implementation from <code>glmnet</code>. As a benefit, we now have a more aligned baseline for the comparison between elastic-net based models and MCP-net/SCAD-net based models when <code>init = "ridge"</code>.</li>
 <li>Style improvements in code and examples: reduced whitespace with a new formatting scheme.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="msaenet-2-2-2017-02-02" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-2-2-2017-02-02" class="anchor"> </a>msaenet 2.2 (2017-02-02)</h1>
+<a href="#msaenet-2-2-2017-02-02" class="anchor"></a>msaenet 2.2 (2017-02-02)</h1>
 <div id="new-features" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features" class="anchor"> </a>New Features</h2>
-<ul><li>Added BIC, EBIC, and AIC in addition to k-fold cross-validation for model selection.</li>
+<a href="#new-features" class="anchor"></a>New Features</h2>
+<ul>
+<li>Added BIC, EBIC, and AIC in addition to k-fold cross-validation for model selection.</li>
 <li>Added new arguments <code>tune</code> and <code>tune.nsteps</code> to controls this for selecting the optimal model for each step, and the optimal model among all steps (i.e. the optimal step).</li>
 <li>Added arguments <code>ebic.gamma</code> and <code>ebic.gamma.nsteps</code> to control the EBIC tuning parameter, if <code>ebic</code> is specified by <code>tune</code> or <code>tune.nsteps</code>.</li>
 <li>Redesigned plot function: now supports two types of plots (coefficient path, screeplot of the optimal step selection criterion), optimal step highlighting, variable labeling, and color palette customization. See <code><a href="../reference/plot.msaenet.html">?plot.msaenet</a></code> for details.</li>
-</ul></div>
+</ul>
+</div>
 <div id="improvements-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-3" class="anchor"> </a>Improvements</h2>
-<ul><li>Renamed previous argument <code>gamma</code> (scaling factor for adaptive weights) to <code>scale</code> to avoid possible confusion.</li>
+<a href="#improvements-3" class="anchor"></a>Improvements</h2>
+<ul>
+<li>Renamed previous argument <code>gamma</code> (scaling factor for adaptive weights) to <code>scale</code> to avoid possible confusion.</li>
 <li>Reset the default values of candidate concavity parameter <code>gammas</code> to be 3.7 for SCAD-net and 3 for MCP-net.</li>
 <li>Unified the supported model <code>family</code> in all model types to be <code>"gaussian"</code>, <code>"binomial"</code>, <code>"poisson"</code>, and <code>"cox"</code>.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="msaenet-2-1-2017-01-15" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-2-1-2017-01-15" class="anchor"> </a>msaenet 2.1 (2017-01-15)</h1>
+<a href="#msaenet-2-1-2017-01-15" class="anchor"></a>msaenet 2.1 (2017-01-15)</h1>
 <div id="new-features-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"> </a>New Features</h2>
-<ul><li>Added functions <code><a href="../reference/msaenet.sim.binomial.html">msaenet.sim.binomial()</a></code>, <code><a href="../reference/msaenet.sim.poisson.html">msaenet.sim.poisson()</a></code>, <code><a href="../reference/msaenet.sim.cox.html">msaenet.sim.cox()</a></code> to generate simulation data for logistic, Poisson, and Cox regression models.</li>
+<a href="#new-features-1" class="anchor"></a>New Features</h2>
+<ul>
+<li>Added functions <code><a href="../reference/msaenet.sim.binomial.html">msaenet.sim.binomial()</a></code>, <code><a href="../reference/msaenet.sim.poisson.html">msaenet.sim.poisson()</a></code>, <code><a href="../reference/msaenet.sim.cox.html">msaenet.sim.cox()</a></code> to generate simulation data for logistic, Poisson, and Cox regression models.</li>
 <li>Added function <code><a href="../reference/msaenet.fn.html">msaenet.fn()</a></code> for computing the number of false negative selections in msaenet models.</li>
 <li>Added function <code><a href="../reference/msaenet.mse.html">msaenet.mse()</a></code> for computing mean squared error (MSE).</li>
-</ul></div>
+</ul>
+</div>
 <div id="improvements-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-4" class="anchor"> </a>Improvements</h2>
-<ul><li>Speed improvements in <code><a href="../reference/msaenet.sim.gaussian.html">msaenet.sim.gaussian()</a></code> by more vectorization when generating correlation matrices.</li>
+<a href="#improvements-4" class="anchor"></a>Improvements</h2>
+<ul>
+<li>Speed improvements in <code><a href="../reference/msaenet.sim.gaussian.html">msaenet.sim.gaussian()</a></code> by more vectorization when generating correlation matrices.</li>
 <li>Added parameters <code>max.iter</code> and <code>epsilon</code> for MCP-net and SCAD-net related functions to have finer control over convergence criterion. By default, <code>max.iter = 10000</code> and <code>epsilon = 1e-4</code>.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="msaenet-2-0-2017-01-05" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-2-0-2017-01-05" class="anchor"> </a>msaenet 2.0 (2017-01-05)</h1>
+<a href="#msaenet-2-0-2017-01-05" class="anchor"></a>msaenet 2.0 (2017-01-05)</h1>
 <div id="new-features-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-2" class="anchor"> </a>New Features</h2>
-<ul><li>Added support for adaptive MCP-net. See <code><a href="../reference/amnet.html">?amnet</a></code> for details.</li>
+<a href="#new-features-2" class="anchor"></a>New Features</h2>
+<ul>
+<li>Added support for adaptive MCP-net. See <code><a href="../reference/amnet.html">?amnet</a></code> for details.</li>
 <li>Added support for adaptive SCAD-net. See <code><a href="../reference/asnet.html">?asnet</a></code> for details.</li>
 <li>Added support for multi-step adaptive MCP-net (MSAMNet). See <code><a href="../reference/msamnet.html">?msamnet</a></code> for details.</li>
 <li>Added support for multi-step adaptive SCAD-net (MSASNet). See <code><a href="../reference/msasnet.html">?msasnet</a></code> for details.</li>
 <li>Added <code><a href="../reference/msaenet.nzv.all.html">msaenet.nzv.all()</a></code> for displaying the indices of non-zero variables in all adaptive estimation steps.</li>
-</ul></div>
+</ul>
+</div>
 <div id="improvements-5" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-5" class="anchor"> </a>Improvements</h2>
-<ul><li>More flexible <code>predict.msaenet</code> method allowing users to specify prediction type.</li>
-</ul></div>
+<a href="#improvements-5" class="anchor"></a>Improvements</h2>
+<ul>
+<li>More flexible <code>predict.msaenet</code> method allowing users to specify prediction type.</li>
+</ul>
+</div>
 </div>
     <div id="msaenet-1-1-2016-12-28" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-1-1-2016-12-28" class="anchor"> </a>msaenet 1.1 (2016-12-28)</h1>
+<a href="#msaenet-1-1-2016-12-28" class="anchor"></a>msaenet 1.1 (2016-12-28)</h1>
 <div id="new-features-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-3" class="anchor"> </a>New Features</h2>
-<ul><li>Added method <code>coef</code> for extracting model coefficients. See <code><a href="../reference/coef.msaenet.html">?coef.msaenet</a></code> for details.</li>
-</ul></div>
+<a href="#new-features-3" class="anchor"></a>New Features</h2>
+<ul>
+<li>Added method <code>coef</code> for extracting model coefficients. See <code><a href="../reference/coef.msaenet.html">?coef.msaenet</a></code> for details.</li>
+</ul>
+</div>
 <div id="improvements-6" class="section level2">
 <h2 class="hasAnchor">
-<a href="#improvements-6" class="anchor"> </a>Improvements</h2>
-<ul><li>New website (<a href="https://msaenet.com" class="uri">https://msaenet.com</a>) generated by pkgdown, with a full set of function documentation and vignettes available.</li>
+<a href="#improvements-6" class="anchor"></a>Improvements</h2>
+<ul>
+<li>New website (<a href="https://msaenet.com" class="uri">https://msaenet.com</a>) generated by pkgdown, with a full set of function documentation and vignettes available.</li>
 <li>Added Windows continuous integration support using AppVeyor.</li>
-</ul></div>
+</ul>
+</div>
 </div>
     <div id="msaenet-1-0-2016-09-20" class="section level1">
 <h1 class="hasAnchor">
-<a href="#msaenet-1-0-2016-09-20" class="anchor"> </a>msaenet 1.0 (2016-09-20)</h1>
+<a href="#msaenet-1-0-2016-09-20" class="anchor"></a>msaenet 1.0 (2016-09-20)</h1>
 <div id="new-features-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-features-4" class="anchor"> </a>New Features</h2>
-<ul><li>Initial version of the msaenet package</li>
-</ul></div>
+<a href="#new-features-4" class="anchor"></a>New Features</h2>
+<ul>
+<li>Initial version of the msaenet package</li>
+</ul>
+</div>
 </div>
     </div>
   </div>
