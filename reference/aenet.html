@@ -90,7 +90,8 @@
   <span class='kw'>init</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"enet"</span>, <span class='st'>"ridge"</span>), <span class='kw'>alphas</span> <span class='kw'>=</span> <span class='fu'>seq</span>(<span class='fl'>0.05</span>, <span class='fl'>0.95</span>, <span class='fl'>0.05</span>),
   <span class='kw'>tune</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"cv"</span>, <span class='st'>"ebic"</span>, <span class='st'>"bic"</span>, <span class='st'>"aic"</span>), <span class='kw'>nfolds</span> <span class='kw'>=</span> <span class='fl'>5L</span>,
   <span class='kw'>rule</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"lambda.min"</span>, <span class='st'>"lambda.1se"</span>), <span class='kw'>ebic.gamma</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>, <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>lower.limits</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper.limits</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1001</span>,
+  <span class='kw'>parallel</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +147,16 @@ default is <code>1</code>. For details, see Chen and Chen (2008).</p></td>
       <th>scale</th>
       <td><p>Scaling factor for adaptive weights:
 <code>weights = coefficients^(-scale)</code>.</p></td>
+    </tr>
+    <tr>
+      <th>lower.limits</th>
+      <td><p>Lower limits for coefficients.
+Default is <code>-Inf</code>. For details, see <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>upper.limits</th>
+      <td><p>Upper limits for coefficients.
+Default is <code>Inf</code>. For details, see <code><a href='http://www.rdocumentation.org/packages/glmnet/topics/glmnet'>glmnet</a></code>.</p></td>
     </tr>
     <tr>
       <th>seed</th>
