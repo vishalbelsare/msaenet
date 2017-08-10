@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,10 +52,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/msaenet.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -212,7 +219,7 @@ and the optimal parameter set.</p>
 #&gt;     nsteps = 3L, seed = 1003) 
 #&gt;   Df    Lambda Gamma Alpha
 #&gt; 1  4 0.4260659     3   0.6</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>msamnet.fit</span>)</div><div class='output co'>#&gt; [1] 2 3 4 5</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>msamnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 0</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>msamnet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='no'>msamnet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>msamnet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
-<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>msamnet.pred</span>)</div><div class='output co'>#&gt; [1] 2.183295</div><div class='input'><span class='fu'>plot</span>(<span class='no'>msamnet.fit</span>)</div><img src='msamnet-12.png' alt='' width='540' height='400' /></pre>
+<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>msamnet.pred</span>)</div><div class='output co'>#&gt; [1] 2.183295</div><div class='input'><span class='fu'>plot</span>(<span class='no'>msamnet.fit</span>)</div><div class='img'><img src='msamnet-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -226,7 +233,7 @@ and the optimal parameter set.</p>
 
     <h2>Author</h2>
     
-Nan Xiao &lt;<a href = 'https://nanx.me'>https://nanx.me</a>&gt;
+Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;
 
   </div>
 </div>

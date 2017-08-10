@@ -23,7 +23,8 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,10 +52,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/msaenet.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -201,7 +208,7 @@ On the adaptive elastic-net with a diverging number of parameters.
 #&gt;     seed = 1002) 
 #&gt;   Df      %Dev       Lambda
 #&gt; 1 16 0.8318547 2.464103e+14</div><div class='input'><span class='fu'><a href='msaenet.nzv.html'>msaenet.nzv</a></span>(<span class='no'>aenet.fit</span>)</div><div class='output co'>#&gt;  [1]   1   2   3   4   5  35  49 114 171 244 262 312 379 441 464 500</div><div class='input'><span class='fu'><a href='msaenet.fp.html'>msaenet.fp</a></span>(<span class='no'>aenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 11</div><div class='input'><span class='fu'><a href='msaenet.tp.html'>msaenet.tp</a></span>(<span class='no'>aenet.fit</span>, <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] 5</div><div class='input'><span class='no'>aenet.pred</span> <span class='kw'>=</span> <span class='fu'>predict</span>(<span class='no'>aenet.fit</span>, <span class='no'>dat</span>$<span class='no'>x.te</span>)
-<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>aenet.pred</span>)</div><div class='output co'>#&gt; [1] 2.686139</div><div class='input'><span class='fu'>plot</span>(<span class='no'>aenet.fit</span>)</div><img src='aenet-12.png' alt='' width='540' height='400' /></pre>
+<span class='fu'><a href='msaenet.rmse.html'>msaenet.rmse</a></span>(<span class='no'>dat</span>$<span class='no'>y.te</span>, <span class='no'>aenet.pred</span>)</div><div class='output co'>#&gt; [1] 2.686139</div><div class='input'><span class='fu'>plot</span>(<span class='no'>aenet.fit</span>)</div><div class='img'><img src='aenet-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -217,7 +224,7 @@ On the adaptive elastic-net with a diverging number of parameters.
 
     <h2>Author</h2>
     
-Nan Xiao &lt;<a href = 'https://nanx.me'>https://nanx.me</a>&gt;
+Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;
 
   </div>
 </div>
