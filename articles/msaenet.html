@@ -75,7 +75,7 @@
       <h1>A Quick Introduction to msaenet</h1>
                         <h4 class="author">Nan Xiao &lt;<a href="https://nanx.me" class="uri">https://nanx.me</a>&gt;</h4>
             
-            <h4 class="date">2017-11-05</h4>
+            <h4 class="date">2018-01-05</h4>
           </div>
 
     
@@ -162,10 +162,14 @@
 <p>A coefficient plot that shows the coefficient changes of all the variables across every adaptive estimation step:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(msaenet.fit, <span class="dt">label =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <p><img src="msaenet_files/figure-html/unnamed-chunk-7-1.png" width="750" height="600"></p>
+<p>The y-axis in the plot represents the relative effect size estimations (standardized into [0, 1]) of the variables.</p>
 <p>Plot the change of the information criterion (EBIC here) used to select the optimal step:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(msaenet.fit, <span class="dt">type =</span> <span class="st">"criterion"</span>)</code></pre></div>
 <p><img src="msaenet_files/figure-html/unnamed-chunk-8-1.png" width="750" height="450"></p>
-<p>The y-axis in the plot represents the relative effect size estimations (standardized into [0, 1]) of the variables.</p>
+<p>Create a Cleveland dot plot for the model coefficients at the optimal step:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(msaenet.fit, <span class="dt">type =</span> <span class="st">"dotplot"</span>, <span class="dt">label =</span> <span class="ot">TRUE</span>, <span class="dt">label.cex =</span> <span class="dv">1</span>)</code></pre></div>
+<p><img src="msaenet_files/figure-html/unnamed-chunk-9-1.png" width="750" height="600"></p>
+<p>To plot the absolute values of the coefficients instead of the raw coefficients, use <code>abs = TRUE</code>.</p>
 <p>The vanilla adaptive elastic-net <span class="citation">(Zou and Zhang 2009)</span> is implemented by the function <code><a href="../reference/aenet.html">aenet()</a></code>. For multi-step adaptive estimation based on MCP-net or SCAD-net, see <code><a href="../reference/amnet.html">?amnet</a></code>, <code><a href="../reference/asnet.html">?asnet</a></code>, <code><a href="../reference/msamnet.html">?msamnet</a></code>, and <code><a href="../reference/msasnet.html">?msasnet</a></code> for details. All the analyses above apply to the models fitted by these functions as well.</p>
 </div>
 <div id="summary" class="section level1">
@@ -205,7 +209,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Nan Xiao.</p>
+  <p>Developed by Nan Xiao, Qing-Song Xu.</p>
 </div>
 
 <div class="pkgdown">

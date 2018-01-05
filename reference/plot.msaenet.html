@@ -106,10 +106,10 @@
     
 
     <pre class="usage"><span class='co'># S3 method for msaenet</span>
-<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"coef"</span>, <span class='st'>"criterion"</span>), <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>label.vars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label.pos</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>label.offset</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>label.cex</span> <span class='kw'>=</span> <span class='fl'>0.7</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>plot</span>(<span class='no'>x</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"coef"</span>, <span class='st'>"criterion"</span>, <span class='st'>"dotplot"</span>),
+  <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>highlight</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>label.vars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label.pos</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>label.offset</span> <span class='kw'>=</span> <span class='fl'>0.3</span>, <span class='kw'>label.cex</span> <span class='kw'>=</span> <span class='fl'>0.7</span>,
+  <span class='kw'>label.srt</span> <span class='kw'>=</span> <span class='fl'>90</span>, <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>abs</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -124,7 +124,9 @@ by <code><a href='aenet.html'>aenet</a></code>, <code>amnet</code>, <code>asnet<
       <th>type</th>
       <td><p>Plot type, <code>"coef"</code> for a coefficient path plot
 across all estimation steps; <code>"criterion"</code> for a scree plot of
-the model evaluation criterion used (CV error, AIC, BIC, or EBIC).</p></td>
+the model evaluation criterion used (CV error, AIC, BIC, or EBIC);
+<code>"dotplot"</code> for a Cleveland dot plot of the coefficients
+estimated by the model at the optimal step.</p></td>
     </tr>
     <tr>
       <th>nsteps</th>
@@ -144,9 +146,9 @@ If it is <code>NULL</code>, a default color palette will be assigned.</p></td>
     <tr>
       <th>label</th>
       <td><p>Should we label all the non-zero variables of the
-optimal step in the coefficient plot? Default is <code>FALSE</code>.
-If <code>TRUE</code> and <code>label.vars = NULL</code>, the index of the
-variables will be used as labels.</p></td>
+optimal step in the coefficient plot or the dot plot?
+Default is <code>FALSE</code>. If <code>TRUE</code> and <code>label.vars = NULL</code>,
+the index of the non-zero variables will be used as labels.</p></td>
     </tr>
     <tr>
       <th>label.vars</th>
@@ -169,12 +171,24 @@ if <code>label = "TRUE"</code>.</p></td>
 See argument <code>cex</code> in <code><a href='http://www.rdocumentation.org/packages/graphics/topics/text'>text</a></code> for details.</p></td>
     </tr>
     <tr>
+      <th>label.srt</th>
+      <td><p>Label rotation in degrees for the Cleveland dot plot.
+Default is <code>90</code>. See argument <code>srt</code> in
+<code><a href='http://www.rdocumentation.org/packages/graphics/topics/par'>par</a></code> for details.</p></td>
+    </tr>
+    <tr>
       <th>xlab</th>
       <td><p>Title for x axis. If is <code>NULL</code>, will use the default title.</p></td>
     </tr>
     <tr>
       <th>ylab</th>
       <td><p>Title for y axis. If is <code>NULL</code>, will use the default title.</p></td>
+    </tr>
+    <tr>
+      <th>abs</th>
+      <td><p>Should we plot the absolute values of the coefficients
+instead of the raw coefficients in the Cleveland dot plot?
+Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -195,7 +209,7 @@ See argument <code>cex</code> in <code><a href='http://www.rdocumentation.org/pa
   <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>5L</span>, <span class='kw'>tune.nsteps</span> <span class='kw'>=</span> <span class='st'>"ebic"</span>,
   <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1003</span>)
 
-<span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>)</div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='plot.msaenet-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='img'><img src='plot.msaenet-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"criterion"</span>)</div><div class='img'><img src='plot.msaenet-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"criterion"</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='img'><img src='plot.msaenet-4.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>)</div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='plot.msaenet-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='img'><img src='plot.msaenet-2.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"criterion"</span>)</div><div class='img'><img src='plot.msaenet-3.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"criterion"</span>, <span class='kw'>nsteps</span> <span class='kw'>=</span> <span class='fl'>5</span>)</div><div class='img'><img src='plot.msaenet-4.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"dotplot"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='plot.msaenet-5.png' alt='' width='700' height='432.632880098887' /></div><div class='input'><span class='fu'>plot</span>(<span class='no'>msasnet.fit</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"dotplot"</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>abs</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='img'><img src='plot.msaenet-6.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -214,7 +228,7 @@ Nan Xiao &lt;<a href='https://nanx.me'>https://nanx.me</a>&gt;
 
       <footer>
       <div class="copyright">
-  <p>Developed by Nan Xiao.</p>
+  <p>Developed by Nan Xiao, Qing-Song Xu.</p>
 </div>
 
 <div class="pkgdown">
