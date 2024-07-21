@@ -54,7 +54,7 @@ default is \code{1}. For details, see Chen and Chen (2008).}
 \item{scale}{Scaling factor for adaptive weights:
 \code{weights = coefficients^(-scale)}.}
 
-\item{eps}{Convergence threshhold to use in MCP-net.}
+\item{eps}{Convergence threshold to use in MCP-net.}
 
 \item{max.iter}{Maximum number of iterations to use in MCP-net.}
 
@@ -68,7 +68,7 @@ Default is \code{rep(1, ncol(x))}.}
 \item{seed}{Random seed for cross-validation fold division.}
 
 \item{parallel}{Logical. Enable parallel parameter tuning or not,
-default is {FALSE}. To enable parallel tuning, load the
+default is \code{FALSE}. To enable parallel tuning, load the
 \code{doParallel} package and run \code{registerDoParallel()}
 with the number of CPU cores before calling this function.}
 

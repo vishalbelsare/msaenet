@@ -5,37 +5,42 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
-knitr::knit_hooks$set(optipng = knitr::hook_optipng)
+knitr::knit_hooks$set(pngquant = knitr::hook_pngquant)
 
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%",
   echo = FALSE,
   message = FALSE,
   warning = FALSE,
-  optipng = "-o1"
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  dev = "ragg_png",
+  dpi = 150,
+  fig.retina = 2,
+  fig.width = 10,
+  fig.height = 5,
+  out.width = "100%",
+  pngquant = "--speed=1 --quality=80"
 )
 ```
 
 # msaenet <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/nanxstats/msaenet/workflows/R-CMD-check/badge.svg)](https://github.com/nanxstats/msaenet/actions)
-[![CRAN Version](https://www.r-pkg.org/badges/version/msaenet)](https://cran.r-project.org/package=msaenet)
-[![Downloads from the RStudio CRAN mirror](https://cranlogs.r-pkg.org/badges/msaenet)](https://cran.r-project.org/package=msaenet)
+[![R-CMD-check](https://github.com/nanxstats/msaenet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nanxstats/msaenet/actions/workflows/R-CMD-check.yaml)
+[![CRAN status](https://www.r-pkg.org/badges/version/msaenet)](https://cran.r-project.org/package=msaenet)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/msaenet)](https://cran.r-project.org/package=msaenet)
 <!-- badges: end -->
 
-`msaenet` implements the multi-step adaptive elastic-net (MSAENet) algorithm for feature selection in high-dimensional regressions proposed in Xiao and Xu (2015) <[DOI:10.1080/00949655.2015.1016944](https://www.tandfonline.com/doi/full/10.1080/00949655.2015.1016944)> ([PDF](https://nanx.me/papers/msaenet.pdf)).
+msaenet implements the multi-step adaptive elastic-net (MSAENet) algorithm for feature selection in high-dimensional regressions proposed in Xiao and Xu (2015) [[PDF](https://nanx.me/papers/msaenet.pdf)].
 
 Nonconvex multi-step adaptive estimations based on MCP-net or SCAD-net are also supported.
 
-Check `vignette("msaenet")` for a quick-start.
+Check `vignette("msaenet")` to get started.
 
 ## Installation
 
-You can install `msaenet` from CRAN:
+You can install msaenet from CRAN:
 
 ```r
 install.packages("msaenet")
@@ -49,7 +54,24 @@ remotes::install_github("nanxstats/msaenet")
 
 ## Citation
 
+To cite the msaenet package in publications, please use
+
 > Nan Xiao and Qing-Song Xu. (2015). Multi-step adaptive elastic-net: reducing false positives in high-dimensional variable selection. _Journal of Statistical Computation and Simulation_ 85(18), 3755--3765.
+
+A BibTeX entry for LaTeX users is
+
+```bibtex
+@article{xiao2015multi,
+  title   = {Multi-step adaptive elastic-net: reducing false positives in high-dimensional variable selection},
+  author  = {Nan Xiao and Qing-Song Xu},
+  journal = {Journal of Statistical Computation and Simulation},
+  volume  = {85},
+  number  = {18},
+  pages   = {3755--3765},
+  year    = {2015},
+  doi     = {10.1080/00949655.2015.1016944}
+}
+```
 
 ## Gallery
 
@@ -65,7 +87,8 @@ dat <- msaenet.sim.gaussian(
 )
 ```
 
-```{r, msaenet, fig.width=10, fig.height=5, dpi=227}
+```{r}
+#| msaenet
 aenet.fit <- aenet(
   dat$x.tr, dat$y.tr,
   alphas = seq(0.1, 0.9, 0.1), seed = 1003
@@ -85,7 +108,8 @@ plot(msaenet.fit)
 
 ### Adaptive MCP-Net / Multi-Step Adaptive MCP-Net
 
-```{r, msamnet, fig.width=10, fig.height=5, dpi=227}
+```{r}
+#| msamnet
 amnet.fit <- amnet(
   dat$x.tr, dat$y.tr,
   alphas = seq(0.1, 0.9, 0.1), seed = 1003
@@ -105,7 +129,8 @@ plot(msamnet.fit)
 
 ### Adaptive SCAD-Net / Multi-Step Adaptive SCAD-Net
 
-```{r, msasnet, fig.width=10, fig.height=5, dpi=227}
+```{r}
+#| msasnet
 asnet.fit <- asnet(
   dat$x.tr, dat$y.tr,
   alphas = seq(0.1, 0.9, 0.1), seed = 1003
@@ -126,9 +151,10 @@ plot(msasnet.fit)
 ## Contribute
 
 To contribute to this project, please take a look at the
-[Contributing Guidelines](CONTRIBUTING.md) first. Please note that this project
-is released with a [Contributor Code of Conduct](CONDUCT.md). By participating
-in this project you agree to abide by its terms.
+[Contributing Guidelines](https://nanx.me/msaenet/CONTRIBUTING.html) first.
+Please note that the msaenet project is released with a
+[Contributor Code of Conduct](https://nanx.me/msaenet/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 ## License
 

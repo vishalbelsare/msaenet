@@ -22,7 +22,7 @@
 #' default is \code{1}. For details, see Chen and Chen (2008).
 #' @param scale Scaling factor for adaptive weights:
 #' \code{weights = coefficients^(-scale)}.
-#' @param eps Convergence threshhold to use in SCAD-net.
+#' @param eps Convergence threshold to use in SCAD-net.
 #' @param max.iter Maximum number of iterations to use in SCAD-net.
 #' @param penalty.factor.init The multiplicative factor for the penalty
 #' applied to each coefficient in the initial estimation step. This is
@@ -32,7 +32,7 @@
 #' Default is \code{rep(1, ncol(x))}.
 #' @param seed Random seed for cross-validation fold division.
 #' @param parallel Logical. Enable parallel parameter tuning or not,
-#' default is {FALSE}. To enable parallel tuning, load the
+#' default is \code{FALSE}. To enable parallel tuning, load the
 #' \code{doParallel} package and run \code{registerDoParallel()}
 #' with the number of CPU cores before calling this function.
 #' @param verbose Should we print out the estimation progress?
@@ -67,18 +67,17 @@
 #' msaenet.rmse(dat$y.te, asnet.pred)
 #' plot(asnet.fit)
 asnet <- function(
-  x, y,
-  family = c("gaussian", "binomial", "poisson", "cox"),
-  init = c("snet", "ridge"),
-  gammas = 3.7, alphas = seq(0.05, 0.95, 0.05),
-  tune = c("cv", "ebic", "bic", "aic"),
-  nfolds = 5L,
-  ebic.gamma = 1,
-  scale = 1,
-  eps = 1e-4, max.iter = 10000L,
-  penalty.factor.init = rep(1, ncol(x)),
-  seed = 1001, parallel = FALSE, verbose = FALSE) {
-
+    x, y,
+    family = c("gaussian", "binomial", "poisson", "cox"),
+    init = c("snet", "ridge"),
+    gammas = 3.7, alphas = seq(0.05, 0.95, 0.05),
+    tune = c("cv", "ebic", "bic", "aic"),
+    nfolds = 5L,
+    ebic.gamma = 1,
+    scale = 1,
+    eps = 1e-4, max.iter = 10000L,
+    penalty.factor.init = rep(1, ncol(x)),
+    seed = 1001, parallel = FALSE, verbose = FALSE) {
   family <- match.arg(family)
   init <- match.arg(init)
   tune <- match.arg(tune)
